@@ -2,7 +2,7 @@
 /**
  * 管理员管理控制器类
  */
-class AdminController extends Controller {
+class AdminController extends PlatformController {
 
 	/**
 	 * 登录表单的展示
@@ -25,12 +25,13 @@ class AdminController extends Controller {
 
 		//调用模型，完成数据的验证
 		$model_admin = new AdminModel;
-		if ($model_admin->check($admin_name, $admin_pass)) {
+		if ($admin_info = $model_admin->check($admin_name, $admin_pass)) {
 			//合法
 			//设置登录凭证
 			//$is_login = 'yes';
 			new SessionDB;
-			$_SESSION['is_login'] = 'yes';
+			// $_SESSION['is_login'] = 'yes';
+			$_SESSION['admin'] = $admin_info;
 
 			// setCookie('is_login', 'yes', time()+3600);
 //			echo '管理员合法';

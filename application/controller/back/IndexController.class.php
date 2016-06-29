@@ -3,16 +3,28 @@
 /**
  * 后台首页相关控制器类
  */
-class IndexController extends Controller {
+class IndexController extends PlatformController {
 
 	public function index() {
-		//判断当前是否登录
-                        new SessionDB;
-		if (!isset($_SESSION['is_login']) || $_SESSION['is_login']!='yes') {
-			//没有登录
-			$this->_jump('index.php?p=back&c=admin&a=login');
-		}
+		include CURRENT_VIEW_PATH . 'index.html';
+	}
 
-		echo 'back index page';
+	public function top() {
+		include CURRENT_VIEW_PATH . 'top.html';
+	}
+
+	public function menu() {
+		include CURRENT_VIEW_PATH . 'menu.html';
+
+	}
+
+	public function main() {
+		include CURRENT_VIEW_PATH . 'main.html';
+
+	}
+
+	public function drag() {
+		include CURRENT_VIEW_PATH . 'drag.html';
+
 	}
 }

@@ -147,4 +147,13 @@ class MySQLDB {
 			return false;
 		}
 	}
+
+	/**
+	 * 转义数据
+	 * @param $data string 待转义数据
+	 * @return string 转义好的数据
+	 */
+	public function escapeString($data) {
+		return mysql_real_escape_string($data, $this->_link);
+	}
 }
